@@ -21,12 +21,17 @@ public class City
      */
     public static Motionless[] Map0()
     {
-        Motionless[] motionlesses = new Motionless[6];
+        Motionless[] motionlesses = new Motionless[100];
 
-        motionlesses[0] = new Motionless(new Point(0,0), new Vector3(4000,4000,0),
-                new Color(0.8f, 0.8f, 0.8f, 1), Color.BROWN, Color.BLACK);
-        motionlesses[1] = new Motionless(new Point(16, 4), new Vector3(16, 32, 32),
-                new Color(0.5f, 0.5f, 0.5f, 1),new Color(0.3f, 0.3f, 0.3f, 1),new Color(0.1f, 0.1f, 0.1f, 1));
+        // Площадка міста загальна
+        motionlesses[0] = Motionless.makeHouse(new Point(0, 0), new Vector3(8000, 8000, 0), new Color(0.8f, 0.8f, 0.8f, 1));
+
+        // Дороги
+
+        // Розмітка
+
+        // Доми
+        motionlesses[1] = Motionless.makeHouse(new Point(16, 4), new Vector3(16, 32, 32), new Color(0.5f, 0.5f, 0.5f, 1));
 
         return motionlesses;
     }

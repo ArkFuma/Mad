@@ -19,22 +19,22 @@ import java.awt.Point;
 public class Motionless extends GameObject
 {
     Texture textures[]; // Масив текстурок
-    int speedAnimation;
-    float lifeMax;
-    float lifeNow;
-    float healing;
-    Vector2 pictureAA;
+    int speedAnimation; // Швидкість анімації
+    float lifeMax; // Максимальна житуха
+    float lifeNow; // Житуха зараз
+    float healing; // Швидкість лікування
+    Vector2 pictureAA; // Відступ картинки зверху
 
-    protected Color topColor;
-    protected Color leftColor;
-    protected Color rightColor;
+    protected Color topColor; // Колір зверху
+    protected Color leftColor; // Колір зліва
+    protected Color rightColor; // Колір зправа
 
-    protected Point pointStart;
-    protected Vector3 size;
+    protected Point pointStart; // Точка початку
+    protected Vector3 size; // Розміри обєкта
 
-    public static int newCoordX = 52;
-    public static int newCoordY = 29;
-    public static int newCoordZ = 60;
+    public static int newCoordX = 52; // Координати розмірів по Х
+    public static int newCoordY = 29; // Координати розмірів по Y
+    public static int newCoordZ = 60; // Координати розмірів по Z
 
     public Motionless(Texture texture, Vector2 position, Vector2 origin, Vector2 scale,
                       float rotation, float layer, Color color,
@@ -68,6 +68,15 @@ public class Motionless extends GameObject
                 new Vector2(0,0), new Vector2(1,1), 0, 0, Color.WHITE, 0, 100, 0.01f,
                 new Vector2(0,0), pointStart, size, topColor, leftColor, rightColor);
 
+    }
+
+    public static Motionless makeHouse(Point pointStart, Vector3 size, Color topColor)
+    {
+        float left = 0.8f;
+        float right = 0.6f;
+        return new Motionless(pointStart, size, topColor,
+                new Color(topColor.r * left, topColor.g * left, topColor.b * left, topColor.a * left),
+                new Color(topColor.r * right, topColor.g * right, topColor.b * right, topColor.a * right));
     }
 
     public void setAnimationTextures(Texture[] textures)
@@ -138,7 +147,7 @@ public class Motionless extends GameObject
     @Override
     public void trueDraw(SpriteBatch spriteBatch, ShapeRenderer shapeRenderer)
     {
-        if (textures == null)
+        if (textures == null) // Для флетартних картинок
         {
             float downNearX = pointStart.x * newCoordX - pointStart.y * newCoordX;
             float downNearY = pointStart.x * newCoordY + pointStart.y * newCoordY;
